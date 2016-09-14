@@ -250,7 +250,7 @@
 	
 	app.directive('lateralSlideMenuToggle', ['$timeout', '$rootElement', function($timeout, $rootElement) {
 	    var ACTIVE_CLASS_NAME = 'menu-click-active';
-
+		var tapping,tapElement,startTime,touchStartX,touchStartY ;
 	    var TAP_DURATION = 750; // Shorter than 750ms is a tap, longer is a taphold or drag.
         var MOVE_TOLERANCE = 12; // 12px seems to work in most mobile browsers.
         var PREVENT_DURATION = 2500; // 2.5 seconds maximum from preventGhostClick call to click
@@ -305,7 +305,7 @@
               lastLabelClickCoordinates = null;
             }
             // remember label click coordinates to prevent click busting of trigger click event on input
-            if (nodeName_(event.target) === 'label') {
+            if (event.target.nodeName === 'label') {
               lastLabelClickCoordinates = [x, y];
             }
 
@@ -428,7 +428,7 @@
                       tapElement.blur();
                     }
 
-                    if (!angular.isDefined(attr.disabled) || attr.disabled === false) {
+                    if (!angular.isDefined(attrs.disabled) || attrs.disabled === false) {
                       element.triggerHandler('click', [event]);
                     }
                   }
