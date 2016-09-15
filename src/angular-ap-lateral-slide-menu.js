@@ -428,9 +428,9 @@
                       tapElement.blur();
                     }
 
-                    if (!angular.isDefined(attrs.disabled) || attrs.disabled === false) {
-                      element.triggerHandler('click', [event]);
-                    }
+                    //if (!angular.isDefined(attrs.disabled) || attrs.disabled === false) {
+                    //  element.triggerHandler('click', [event]);
+                    //}
                   }
 
                   resetState();
